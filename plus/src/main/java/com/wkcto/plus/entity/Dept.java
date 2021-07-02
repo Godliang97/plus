@@ -12,8 +12,8 @@ public class Dept extends Model<Dept> {
 
     //定义属性名，属性名和表的列名一样
 
-    //分布式id，使用雪花算法
-    @TableId(value = "id", type = IdType.ID_WORKER_STR)
+    //uuid
+    @TableId(value = "id", type = IdType.UUID)
     private String id;
     private String name;
     private String mobile;
