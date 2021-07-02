@@ -14,8 +14,8 @@ public class DeptARTest {
     public void testARTest() {
         //定义dept的实体
         Dept dept = new Dept();
-        dept.setName("销售部");
-        dept.setMobile("010-12345678");
+        dept.setName("市场部");
+        dept.setMobile("010-5555555");
         dept.setManager(1);
         //调用实体对象自己的方法，完成对象自身到数据库的添加操作
         boolean flag = dept.insert();
