@@ -11,17 +11,19 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 public class Dept extends Model<Dept> {
 
     //定义属性名，属性名和表的列名一样
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+
+    //分布式id，使用雪花算法
+    @TableId(value = "id", type = IdType.ID_WORKER)
+    private Long id;
     private String name;
     private String mobile;
     private Integer manager;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

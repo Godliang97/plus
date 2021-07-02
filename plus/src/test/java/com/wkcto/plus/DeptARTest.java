@@ -29,7 +29,7 @@ public class DeptARTest {
     public void testARUpdate() {
         //定义实体Dept
         Dept dept = new Dept();
-        dept.setId(1);
+//        dept.setId(1);
         dept.setName("市场部");
         dept.setMobile("010-22222222");
         dept.setManager(2);
@@ -43,7 +43,7 @@ public class DeptARTest {
     public void testUpdateById2() {
         //定义实体Dept
         Dept dept = new Dept();
-        dept.setId(1);
+//        dept.setId(1);
         dept.setMobile("010-33333333");
         //name manager 是没有修改的
 
@@ -68,7 +68,7 @@ public class DeptARTest {
     @Test
     public void testARDeleteById2() {
         Dept dept = new Dept();
-        dept.setId(2);
+//        dept.setId(2);
         boolean result = dept.deleteById();
         System.out.println("ar deleteById result:" + result);
     }
@@ -86,7 +86,7 @@ public class DeptARTest {
     public void testARSelectById() {
         Dept dept = new Dept();
         //设置主键的值
-        dept.setId(3);
+//        dept.setId(3);
         //调用查询方法
         Dept dept1 = dept.selectById();
         System.out.println("ar selectById result:" + dept1);
