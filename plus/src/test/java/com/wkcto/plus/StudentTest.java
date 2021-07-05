@@ -1,6 +1,8 @@
 package com.wkcto.plus;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wkcto.plus.entity.Student;
 import com.wkcto.plus.mapper.StudentMapper;
 import jdk.nashorn.internal.ir.CallNode;
@@ -435,6 +437,35 @@ public class StudentTest {
     private void print(QueryWrapper qw) {
         List<Student> students = studentDao.selectList(qw);
         students.forEach(stu -> System.out.println(stu));
+    }
+
+    /**
+     * 分页：
+     * 1.统计记录数，使用count(1)
+     *     SELECT COUNT(1) FROM student WHERE age > ?
+     * 2.实现分页，在sql语句的末尾加入 limit 0,3
+     *     SELECT id,name,age,email,status FROM student WHERE age > ? LIMIT 0,3
+     */
+    @Test
+    public void testPage(){
+        QueryWrapper<Student> qw = new QueryWrapper<>();
+        qw.gt("age",21);
+        Page<Student> page = new Page<>();
+        //设置分析的数据
+        page.setCurrent(1);//第一页
+        page.setSize(3);//每页的记录数
+
+        IPage<Student> result = studentDao.selectPage(page, qw);
+
+        //获取分页后的记录
+        List<Student> students = result.getRecords();
+        System.out.println("student.size()="+students.size());
+        //分页信息
+        Long pages = result.getPages();
+        System.out.println("页数:"+pages);
+        System.out.println("总记录数:"+result.getTotal());
+        System.out.println("当前页码:"+result.getCurrent());
+        System.out.println("每页的记录数:"+result.getSize());
     }
 
 }
